@@ -14,7 +14,7 @@ Woo Gold Surcharge is a custom WooCommerce plugin that dynamically applies a sur
 ## Installation
 1. **Download & Zip the Plugin**
    - Ensure all plugin files are inside a folder named `woo-gold-surcharge`.
-   - Create a ZIP file:
+   - Create a ZIP file. Use WinRAR, 7zip, or which one you prefer to zip the file. Or just write the code below:
      ```sh
      zip -r woo-gold-surcharge.zip woo-gold-surcharge/
      ```

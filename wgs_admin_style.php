@@ -1,0 +1,118 @@
+/* <?php header("Content-type: text/css"); ?> */
+
+/* Woo Gold Surcharge Custom Admin Styles */
+.plugin-wrapper {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow: hidden;
+}
+.plugin-wrapper h1 {
+    display: flex;
+    font-size: 20px;
+    font-weight: 400;
+    background: #c89505;
+    color: #fff;
+    padding: 20px;
+    flex-direction: column;
+    gap: 5px;
+}
+.plugin-wrapper form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 40px;
+}
+.wgs-2-columns {
+    display: flex;
+    gap: 20px;
+}
+.wgs-form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.wgs-form-group p.submit {
+    margin: 0;
+    padding: 0;
+}
+.wgs-form-group label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #454242;
+}
+.wgs-form-control {
+    font-size: 16px;
+    padding: 13px 20px !important;
+    padding-right: 50px !important;
+}
+.wgs-form-control {
+    font-size: 16px;
+    padding: 13px 20px !important;
+    padding-right: 50px !important;
+    border: 1px solid #eee !important;
+    border-radius: 15px !important;
+}
+.wgs-form-group small {
+    font-size: 12px;
+    font-style: italic;
+    padding-left: 10px;
+    color: #c89505;
+    font-weight: 600;
+}
+.wgs-form-group .float-icon {
+    position: absolute;
+    right: 15px;
+    top: 42px;
+    font-size: 22px;
+    color: #b7aeae;
+}
+.plugin-wrapper h1 small {
+    font-size: 14px;
+}
+.woo-gold-btn {
+    background-color: #c89505 !important;
+    border-color: #9b7509 !important;
+    color: #ffffff !important;
+    font-weight: 400;
+    padding: 10px 20px !important;
+    border-radius: 10px !important;
+    font-size: 16px !important;
+    transition: .2s;
+}
+.woo-gold-btn:hover {
+    background-color: #9b7509 !important;
+}
+.plugin-wrapper .notice-success, .plugin-wrapper div.updated {
+    margin: 20px !important;
+    margin-bottom: -15px !important;
+}
+.wgs-form-group.form-checkbox-group h6 {
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.wgs-form-group.form-checkbox-group label{
+    font-weight: 400;
+}
+.fcg-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 10px;
+}
+.exclude-label {
+    color: #c2c2c2 !important;
+    text-decoration: line-through;
+}
+.default-label {
+    color: #3b3b3b !important;
+}
+/* Change color when checkbox is checked */
+.default-label input:checked + span {
+    color: #c2c2c2 !important;
+    text-decoration: line-through;
+}

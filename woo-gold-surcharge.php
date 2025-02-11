@@ -93,11 +93,18 @@
     <?php }
 
     // Include CSS file
+    // // Enqueue Admin Styles
     function woo_gold_surcharge_enqueue_styles($hook) {
         if ($hook !== 'product_page_woo-gold-surcharge') {
             return;
         }
-        wp_enqueue_style('woo-gold-surcharge-css', plugin_dir_url(__FILE__) . 'wgs_admin_style.php');
+        wp_enqueue_style(
+            'woo-gold-surcharge-css',
+            plugins_url('assets/styles.css', __FILE__),
+            array(),
+            '1.0.0'
+        );
     }
     add_action('admin_enqueue_scripts', 'woo_gold_surcharge_enqueue_styles');
+
 ?>

@@ -29,19 +29,55 @@ add_filter('woocommerce_variation_prices_price', 'custom_price_range_variation',
 add_filter('woocommerce_variation_prices_regular_price', 'custom_price_range_variation', 99, 3);
 add_filter('woocommerce_get_price_html', 'custom_variation_price_range_display', 99, 2);
 
-function apply_gold_surcharge($price, $product){
+/* Commented for now to reuse later
+    function apply_gold_surcharge($price, $product){
+        global $base_surcharge, $excluded_metals;
+
+        if ($base_surcharge <= 0 || empty($price)) {
+            return $price; // No surcharge if not set
+        }
+
+        // Get metal attribute directly
+        $metal = $product->get_attribute('pa_metal');
+        if (!in_array($metal, $excluded_metals, true)) {
+            $surcharge = $price * ($base_surcharge / 100);
+            return $price + $surcharge;
+        }
+        return $price;
+    }
+*/
+
+function apply_gold_surcharge($price, $product) {
     global $base_surcharge, $excluded_metals;
 
-    if ($base_surcharge <= 0 || empty($price)) {
-        return $price; // No surcharge if not set
+    if (empty($price)) {
+        return $price; // Return if no base price
     }
 
-    // Get metal attribute directly
-    $metal = $product->get_attribute('pa_metal');
-    if (!in_array($metal, $excluded_metals, true)) {
-        $surcharge = $price * ($base_surcharge / 100);
-        return $price + $surcharge;
+    // Check if it's a Canadian domain
+    $is_canada = strpos($_SERVER['HTTP_HOST'], '.ca') !== false;
+
+    if ($product->is_type('variation')) {
+        // Get variation-specific Canada price
+        $variation_id = $product->get_id();
+        $canada_price = get_post_meta($variation_id, '_canada_price', true);
+    } else {
+        // Get simple product Canada price
+        $canada_price = get_post_meta($product->get_id(), '_canada_price', true);
     }
+
+    // If it's Canada and there's a valid Canada price, use it
+    if ($is_canada && !empty($canada_price)) {
+        $price = floatval($canada_price);
+    }
+
+    // Apply surcharge only if the product metal is not excluded
+    $metal = $product->get_attribute('pa_metal');
+    if (!in_array($metal, $excluded_metals, true) && $base_surcharge > 0) {
+        $surcharge = $price * ($base_surcharge / 100);
+        $price += $surcharge;
+    }
+
     return $price;
 }
 
